@@ -15,6 +15,7 @@ class Document
     @pdf.define_grid(:columns => @columns, :rows => @rows, :gutter => @gutter)
     for i in 0..(@columns * @rows - 1) do
       @pdf.grid((i / @columns).to_i, i % @columns).bounding_box do
+        @pdf.text "##{@data["batch_number"]}", align: :center, size: @font_size
         @pdf.text @data["date"], align: :center, size: @font_size
         @pdf.move_down(5 * @font_size)
         @pdf.text @data["title"], align: :center, size: @font_size * 2
